@@ -54,6 +54,7 @@ return {
     },
     opts = {
       servers = {
+        html = {},
         lua_ls = {},
         astro = {},
         ts_ls = {

@@ -27,6 +27,7 @@ return {
     "folke/todo-comments.nvim",
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufEnter" },
     cmd = { "TodoTrouble", "TodoTelescope" },
     opts = {},
     keys = {
@@ -44,15 +45,15 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>ft", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>",   desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>",   desc = "Todo/Fix/Fixme (Trouble)" },
       { "<leader>xT", "<cmd>TodoTrouble toggle<CR>",                    desc = "Todo (Trouble)" },
-      { "<leader>xt", "<cmd>TodoFzfLua<CR>",                            desc = "Todo (fzf-lua)" },
+      { "<leader>ft", "<cmd>TodoFzfLua<CR>",                            desc = "Todo (fzf-lua)" },
       { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
     },
   },
   {
     "folke/flash.nvim",
-    lazy = true,
+    event = "VeryLazy",
     opts = {},
     keys = {
       {
@@ -117,11 +118,12 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "InsertEnter",
+    version = "*",
+    event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({})
-    end,
+      require("nvim-surround").setup({
+      })
+    end
   },
   {
     "folke/tokyonight.nvim",
