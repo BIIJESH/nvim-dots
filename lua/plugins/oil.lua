@@ -2,7 +2,9 @@ return {
   {
     "stevearc/oil.nvim",
     lazy = true,
-    event = "BufReadPre",
+    keys = {
+      { "-", function() require("oil").toggle_float() end, { desc = "Toggle Oil Float" } }
+    },
     config = function()
       local oil = require("oil")
       oil.setup({
@@ -25,7 +27,6 @@ return {
           get_win_title = nil,
           preview_split = "auto",
         },
-        keys = vim.keymap.set("n", "-", require("oil").toggle_float, { desc = "Toggle Oil Float" }),
       })
     end,
   },
@@ -76,6 +77,7 @@ return {
       { "<leader>fc", "<cmd>FzfLua commands<CR>",       desc = "Commands" },
       { "<leader>fC", "<cmd>FzfLua colorschemes<CR>",   desc = "Colorscheme" },
       { "<leader>gr", "<cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
+      { "<leader>fq", "<cmd>FzfLua quickfix<CR>",       desc = "Open Quickfix list" },
     },
   },
 }

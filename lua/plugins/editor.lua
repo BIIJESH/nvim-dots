@@ -24,23 +24,6 @@ return {
     },
   },
   {
-    "folke/trouble.nvim",
-    lazy = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = { "Trouble", "TroubleToggle" },
-    opts = {},
-    keys = {
-      { "<leader>xx", "<cmd>Trouble diagnostics<CR>",    desc = "Diagnostics (Trouble)" },
-      {
-        "<leader>xw",
-        "<cmd>Trouble diagnostics toggle filter.buf =0<CR>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Location list (Trouble)" },
-      { "<leader>xq", "<cmd>Trouble qflist toggle<CR>",  desc = "Quickfix list (Trouble)" },
-    },
-  },
-  {
     "folke/todo-comments.nvim",
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },

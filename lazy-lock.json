@@ -20,6 +20,5 @@
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "todo-comments.nvim": { "branch": "main", "commit": "7cc68429485029508ff0fe813587942f15043a96" },
   "tokyonight.nvim": { "branch": "main", "commit": "775f82f08a3d1fb55a37fc6d3a4ab10cd7ed8a10" },
-  "trouble.nvim": { "branch": "main", "commit": "4d36b8979287f5facc03fd6d955ace67db667e1d" },
   "which-key.nvim": { "branch": "main", "commit": "1f8d414f61e0b05958c342df9b6a4c89ce268766" }
 }
