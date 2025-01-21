@@ -55,6 +55,8 @@ return {
     opts = {
       servers = {
         html = {},
+        clangd = {},
+        pyright = {},
         lua_ls = {},
         astro = {},
         ts_ls = {
@@ -117,6 +119,12 @@ return {
             "typescriptreact"
           }
         },
+        hyprls = {},
+        jsonls = {},
+        elixirls = {
+          cmd = { "/home/papa/language_server.sh" },
+          filetypes = { "elixir", "eelixir", "heex", "surface" }
+        }
       }
     },
     cmd = { "LspInfo", "LspInstall", "LspUninstall" },
