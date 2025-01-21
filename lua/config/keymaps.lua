@@ -25,6 +25,3 @@ map("n", "<leader>ht", ":set filetype=html<CR>", { noremap = true, silent = true
 set("n", "<leader>cf", function()
   vim.lsp.buf.format()
 end, { desc = "Format Code" })
-
--- vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent dir" })
--- vim.keymap.set("n", "<leader>of", require("oil").toggle_float, { desc = "Toggle Oil Float" })

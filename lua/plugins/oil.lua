@@ -78,6 +78,7 @@ return {
       { "<leader>fC", "<cmd>FzfLua colorschemes<CR>",   desc = "Colorscheme" },
       { "<leader>gr", "<cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
       { "<leader>fq", "<cmd>FzfLua quickfix<CR>",       desc = "Open Quickfix list" },
+      { "<leader>rr", "<cmd>FzfLua registers<CR>",       desc = "Find registers list" },
     },
   },
 }
