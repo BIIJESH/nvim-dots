@@ -1,6 +1,5 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "astrolsp": { "branch": "main", "commit": "0202049c11ac62abf7156a6aaa755752ed70fe98" },
   "blink.cmp": { "branch": "main", "commit": "1cc3b1a908fbcfd15451c4772759549724f38524" },
   "dropbar.nvim": { "branch": "master", "commit": "f7137785ed3ddce31d1e2837dc13792d24d217a8" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },

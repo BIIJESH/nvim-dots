@@ -49,7 +49,7 @@ return {
     "neovim/nvim-lspconfig",
     name = "lspconfig",
     dependencies = {
-      { "AstroNvim/astrolsp", opts = {} },
+      -- { "AstroNvim/astrolsp", opts = {} },
       { "saghen/blink.cmp" },
     },
     opts = {
@@ -135,7 +135,7 @@ return {
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
-      vim.tbl_map(require("astrolsp").lsp_setup, require("astrolsp").config.servers)
+      -- vim.tbl_map(require("astrolsp").lsp_setup, require("astrolsp").config.servers)
     end,
   },
 }

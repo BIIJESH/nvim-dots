@@ -31,8 +31,11 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
-    event = "BufEnter",
+    'numToStr/Comment.nvim',
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require('Comment').setup()
+    end
   },
   {
     "windwp/nvim-ts-autotag",
