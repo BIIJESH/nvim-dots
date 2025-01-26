@@ -1,6 +1,6 @@
 return {
   {
-    "lewis6991/gitsigns.nvim", --TODO: need to check this
+    "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     opts = {},
     keys = {
@@ -29,7 +29,7 @@ return {
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim" },
     event = { "BufEnter" },
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    cmd = { "TodoTrouble", "TodoFzfLua" },
     opts = {},
     keys = {
       {
@@ -46,10 +46,10 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>",   desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble toggle<CR>",                    desc = "Todo (Trouble)" },
-      { "<leader>ft", "<cmd>TodoFzfLua<CR>",                            desc = "Todo (fzf-lua)" },
-      { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme" },
+      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble toggle<CR>",                  desc = "Todo (Trouble)" },
+      { "<leader>ft", "<cmd>TodoFzfLua<CR>",                          desc = "Todo (fzf-lua)" },
+      { "<leader>fT", "<cmd>TodoFzfLua keywords=TODO,FIX,FIXME<CR>",  desc = "Todo/Fix/Fixme" },
     },
   },
   {

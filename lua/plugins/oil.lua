@@ -8,6 +8,9 @@ return {
     config = function()
       local oil = require("oil")
       oil.setup({
+        default_file_explorer = true,
+        delete_to_trash = true,
+        skip_confirm_for_simple_edits = true,
         columns = { "icon" },
         keymaps = {
           ["C-h"] = false,
@@ -23,8 +26,8 @@ return {
           border = "rounded",
           win_options = {
             winblend = 0,
+            wrap = true,
           },
-          get_win_title = nil,
           preview_split = "auto",
         },
       })
@@ -78,7 +81,7 @@ return {
       { "<leader>fC", "<cmd>FzfLua colorschemes<CR>",   desc = "Colorscheme" },
       { "<leader>gr", "<cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
       { "<leader>fq", "<cmd>FzfLua quickfix<CR>",       desc = "Open Quickfix list" },
-      { "<leader>rr", "<cmd>FzfLua registers<CR>",       desc = "Find registers list" },
+      { "<leader>rr", "<cmd>FzfLua registers<CR>",      desc = "Find registers list" },
     },
   },
 }
