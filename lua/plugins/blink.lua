@@ -59,6 +59,10 @@ return {
         pyright = {},
         lua_ls = {},
         astro = {},
+        gopls = {
+          cmd = { "gopls" },
+          filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        },
         ts_ls = {
           filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
           settings = {
