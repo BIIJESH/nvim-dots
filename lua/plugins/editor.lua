@@ -46,10 +46,9 @@ return {
         end,
         desc = "Previous todo comment",
       },
-      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble toggle<CR>",                  desc = "Todo (Trouble)" },
-      { "<leader>ft", "<cmd>TodoFzfLua<CR>",                          desc = "Todo (fzf-lua)" },
-      { "<leader>fT", "<cmd>TodoFzfLua keywords=TODO,FIX,FIXME<CR>",  desc = "Todo/Fix/Fixme" },
+      { "<leader>xt", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<CR>",                                                desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble toggle<CR>",                                                                 desc = "Todo (Trouble)" },
+      { "<leader>ft", function() require('fzf-lua').grep({ search = 'TODO|HACK|PERF|NOTE|FIX', no_esc = true }) end, desc = "Search TODO, HACK, PERF, NOTE, FIX (fzf-lua)" }
     },
   },
   {
@@ -131,16 +130,6 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
-  },
-  {
-    "Bekaboo/dropbar.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      local dropbar_api = require("dropbar.api")
-      vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })
-      vim.keymap.set("n", "[;", dropbar_api.goto_context_start, { desc = "Go to start of current context" })
-      vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
-    end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",

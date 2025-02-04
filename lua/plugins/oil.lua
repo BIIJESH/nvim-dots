@@ -49,8 +49,8 @@ return {
           },
         },
         winopts = {
-          height = 0.95,
-          width = 0.95,
+          height = 0.8,
+          width = 0.8,
           preview = {
             layout = "horizontal",
             flip_columns = 0.65,

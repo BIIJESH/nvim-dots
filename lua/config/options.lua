@@ -70,3 +70,27 @@ filetype.add({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "single", -- You can use "single", "double", "solid", "shadow", etc.
 })
+
+vim.o.showtabline = 2
+vim.o.tabline = "%!v:lua.MyBufferline()"
+
+function MyBufferline()
+    local buffers = vim.api.nvim_list_bufs()
+    local result = ""
+    for _, buf in ipairs(buffers) do
+        if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+            local bufname = vim.api.nvim_buf_get_name(buf)
+            bufname = bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "[No Name]"
+
+            local bufnum = vim.api.nvim_buf_get_number(buf)
+            local is_active = (bufnum == vim.api.nvim_get_current_buf())
+            if is_active then
+                result = result .. " %#TabLineSel#[" .. bufname .. "]%#TabLine# "
+            else
+                result = result .. " [" .. bufname .. "] "
+            end
+        end
+    end
+
+    return result ~= "" and result or "%#TabLineFill# No Buffers %#TabLine#"
+end
