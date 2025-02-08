@@ -91,6 +91,5 @@ function MyBufferline()
             end
         end
     end
-
     return result ~= "" and result or "%#TabLineFill# No Buffers %#TabLine#"
 end

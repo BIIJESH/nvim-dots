@@ -47,12 +47,14 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    --TODO:inlay hints not working 
     name = "lspconfig",
     dependencies = {
       -- { "AstroNvim/astrolsp", opts = {} },
       { "saghen/blink.cmp" },
     },
     opts = {
+      inlay_hints = { enabled = true },
       servers = {
         html = {},
         clangd = {},
@@ -116,6 +118,7 @@ return {
             },
           },
         },
+        phpactor = {},
         emmet_ls = {
           filetypes = {
             "typescript",

@@ -148,4 +148,4 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-}
+ }
