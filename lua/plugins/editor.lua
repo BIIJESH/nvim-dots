@@ -1,7 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
+    lazy = true,
     opts = {},
     keys = {
       {
@@ -76,7 +76,7 @@ return {
   },
   {
     "folke/which-key.nvim",
-    event = "VimEnter",
+    lazy = true,
     dependencies = {
       "echasnovski/mini.icons",
     },
@@ -108,11 +108,13 @@ return {
     end,
     keys = {
       {
-        "<leader>?",
+        "<Space>",
         function()
-          require("which-key").show({ global = false })
+          local wk = require("which-key")
+          wk.show("", { mode = "n" })       -- Ensure it is called with the correct mode
         end,
-        desc = "Buffer local keymaps (which-key)",
+        mode = "n",                         -- Ensures it only triggers in normal mode
+        desc = "Trigger which-key with Space",
       },
     },
   },
@@ -130,6 +132,9 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
+    config = function()
+      vim.cmd("colorscheme tokyonight-night")
+    end
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -148,4 +153,4 @@ return {
     event = "InsertEnter",
     opts = {},
   },
- }
+}
