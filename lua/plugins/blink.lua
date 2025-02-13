@@ -47,7 +47,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    --TODO:inlay hints not working 
+    --TODO:inlay hints not working
     name = "lspconfig",
     dependencies = {
       -- { "AstroNvim/astrolsp", opts = {} },
@@ -60,38 +60,42 @@ return {
         clangd = {},
         pyright = {},
         lua_ls = {},
+        vtsls = {
+          filetypes =
+          { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+        },
         astro = {},
         gopls = {
           cmd = { "gopls" },
           filetypes = { "go", "gomod", "gowork", "gotmpl" },
         },
-        ts_ls = {
-          filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "literal",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          },
-        },
+        -- ts_ls = {
+        --   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+        --   settings = {
+        --     typescript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = "literal",
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        --         includeInlayFunctionParameterTypeHints = true,
+        --         includeInlayVariableTypeHints = false,
+        --         includeInlayPropertyDeclarationTypeHints = true,
+        --         includeInlayFunctionLikeReturnTypeHints = true,
+        --         includeInlayEnumMemberValueHints = true,
+        --       },
+        --     },
+        --     javascript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = "all",
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --         includeInlayFunctionParameterTypeHints = true,
+        --         includeInlayVariableTypeHints = true,
+        --         includeInlayPropertyDeclarationTypeHints = true,
+        --         includeInlayFunctionLikeReturnTypeHints = true,
+        --         includeInlayEnumMemberValueHints = true,
+        --       },
+        --     },
+        --   },
+        -- },
         tailwindcss = {
           filetypes = {
             "astro", "javascriptreact", "javascript", "ejs", "typescriptreact", "typescript"
