@@ -111,9 +111,9 @@ return {
         "<Space>",
         function()
           local wk = require("which-key")
-          wk.show("", { mode = "n" })       -- Ensure it is called with the correct mode
+          wk.show("", { mode = "n" }) -- Ensure it is called with the correct mode
         end,
-        mode = "n",                         -- Ensures it only triggers in normal mode
+        mode = "n",                   -- Ensures it only triggers in normal mode
         desc = "Trigger which-key with Space",
       },
     },
@@ -153,4 +153,27 @@ return {
     event = "InsertEnter",
     opts = {},
   },
+  {
+    'vyfor/cord.nvim',
+    build = ':Cord update',
+    opts = function()
+      return {
+        display = {
+          theme = 'pastel'
+        },
+        lazy = {
+          icon = require('cord.api.icon').get('idle', 'onyx'),
+        }
+      }
+    end,
+    config = function()
+      vim.keymap.set('n', '<leader>Ct', function()
+        require('cord.api.command').toggle_presence()
+      end, { desc = "Toggle Discord Presence" })
+
+      vim.keymap.set('n', '<leader>Ci', function()
+        require('cord.api.command').toggle_idle_force()
+      end, { desc = "Toggle Discord Idle" })
+    end
+  }
 }
