@@ -159,21 +159,13 @@ return {
     opts = function()
       return {
         display = {
-          theme = 'pastel'
+          theme = 'onyx',
+          swap_icons = 'true'
         },
         lazy = {
           icon = require('cord.api.icon').get('idle', 'onyx'),
-        }
+        },
       }
     end,
-    config = function()
-      vim.keymap.set('n', '<leader>Ct', function()
-        require('cord.api.command').toggle_presence()
-      end, { desc = "Toggle Discord Presence" })
-
-      vim.keymap.set('n', '<leader>Ci', function()
-        require('cord.api.command').toggle_idle_force()
-      end, { desc = "Toggle Discord Idle" })
-    end
-  }
+  },
 }

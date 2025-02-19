@@ -36,12 +36,12 @@ return {
       },
       sources = {
         providers = {
+          cmdline = { enabled = false },
           lsp = {
             async = true
           },
         },
         default = { "lsp", "path", "snippets", "buffer" }, --BUG:with lsp as source ts_ls is so slow
-        cmdline = { enabled = false },
       },
     },
   },
