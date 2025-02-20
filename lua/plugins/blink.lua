@@ -15,7 +15,7 @@ return {
         ["<S-Tab>"] = { "select_prev" },
       },
       completion = {
-        menu = { border = "single" },
+        menu = { border = "single" , auto_show = function(ctx) return ctx.mode ~= 'cmdline' end},
         documentation = {
           auto_show_delay_ms = 0,
           window = {
@@ -36,7 +36,6 @@ return {
       },
       sources = {
         providers = {
-          cmdline = { enabled = false },
           lsp = {
             async = true
           },
