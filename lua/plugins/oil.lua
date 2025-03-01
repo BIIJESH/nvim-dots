@@ -68,7 +68,7 @@ return {
           rg_opts =
           "--hidden --column --line-number --no-heading --color=always --smart-case -g '!node_modules/*' -g '!venv/*'",
         },
-        file_ignore_patterns = { "%.svg", "%.class", "%.png", "%.jpg" },
+        file_ignore_patterns = { "%.svg", "%.class", "%.png", "%.jpg","node_modules/" },
       })
     end,
     keys = {

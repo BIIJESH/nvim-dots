@@ -153,19 +153,4 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-  {
-    'vyfor/cord.nvim',
-    build = ':Cord update',
-    opts = function()
-      return {
-        display = {
-          theme = 'onyx',
-          swap_icons = 'true'
-        },
-        lazy = {
-          icon = require('cord.api.icon').get('idle', 'onyx'),
-        },
-      }
-    end,
-  },
 }

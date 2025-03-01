@@ -14,14 +14,17 @@ return {
         ["<Tab>"] = { "select_next" },
         ["<S-Tab>"] = { "select_prev" },
       },
+      cmdline = {
+        enabled = false
+      },
       completion = {
-        menu = { border = "single" , auto_show = function(ctx) return ctx.mode ~= 'cmdline' end},
+        menu = { border = "single" },
         documentation = {
           auto_show_delay_ms = 0,
           window = {
             border = "single",
           },
-          auto_show = true,
+          auto_show = false,
         },
         trigger = {
           show_in_snippet = true,
