@@ -21,7 +21,7 @@ return {
       { "<leader>gp",  "<cmd>Gitsigns preview_hunk<CR>",              desc = "Preview hunk" },
       { "<leader>gtb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle current line blame" },
       { "<leader>gtd", "<cmd>Gitsigns toggle_deleted<CR>",            desc = "Toggle deleted" },
-      { "<leader>bb",  "<cmd>Gitsigns blame<CR>",                     desc = "Gitsigns blames" },
+      { "<leader>gb",  "<cmd>Gitsigns blame<CR>",                     desc = "Gitsigns blames" },
     },
   },
   {
@@ -76,7 +76,7 @@ return {
   },
   {
     "folke/which-key.nvim",
-    lazy = true,
+    lazy = "VeryLazy",
     dependencies = {
       "echasnovski/mini.icons",
     },
