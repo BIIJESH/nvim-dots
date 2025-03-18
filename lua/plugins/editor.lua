@@ -129,12 +129,11 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
+    lazy = false,  -- Load at startup
+    priority = 1000, -- Load before other plugins
     config = function()
-      vim.cmd("colorscheme tokyonight-night")
-    end
+      vim.cmd([[colorscheme tokyonight-night]])
+    end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
