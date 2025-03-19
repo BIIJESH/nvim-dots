@@ -1,5 +1,3 @@
--- Snippets configuration
-require("config.snippets")
 -- Use locals for better organization
 local api = vim.api
 local opt = vim.opt
@@ -10,6 +8,7 @@ local cmd = vim.cmd
 local filetype = vim.filetype
 -- Always show the statusline
 opt.showmode = true
+g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
 
 -- Leader keys
 g.mapleader = " "
@@ -93,3 +92,4 @@ function MyBufferline()
     end
     return result ~= "" and result or "%#TabLineFill# No Buffers %#TabLine#"
 end
+
