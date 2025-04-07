@@ -52,73 +52,6 @@ return {
     },
   },
   {
-    "folke/flash.nvim",
-    opts = {},
-    lazy = true,
-    keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-        {
-          "<c-s>",
-          mode = { "c" },
-          function()
-            require("flash").toggle()
-          end,
-          desc = "Toggle Flash Search",
-        },
-      },
-    },
-  },
-  {
-    "folke/which-key.nvim",
-    lazy = "VeryLazy",
-    dependencies = {
-      "echasnovski/mini.icons",
-    },
-    opts_extend = { "spec" },
-    opts = {
-      defaults = {},
-      spec = {
-        {
-          mode = { "n", "v" },
-          { "<leader>b",  group = "buffer" },
-          { "<leader>c",  group = "code" },
-          { "<leader>f",  group = "find" },
-          { "<leader>g",  group = "git" },
-          { "<leader>gt", group = "toggle" },
-          { "<leader>n",  group = "noice" },
-          { "<leader>q",  group = "session" },
-          { "<leader>t",  group = "toggle" },
-          { "<leader>x",  group = "diagnostics/quickfix" },
-          { "]",          group = "next" },
-          { "[",          group = "previous" },
-          { "g",          group = "goto" },
-          { "z",          group = "fold" },
-        },
-      },
-    },
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-    end,
-    keys = {
-      {
-        "<Space>",
-        function()
-          local wk = require("which-key")
-          wk.show("", { mode = "n" }) -- Ensure it is called with the correct mode
-        end,
-        mode = "n",                   -- Ensures it only triggers in normal mode
-        desc = "Trigger which-key with Space",
-      },
-    },
-  },
-  {
     "kylechui/nvim-surround",
     version = "*",
     event = "BufReadPre",
@@ -127,9 +60,16 @@ return {
       })
     end
   },
+  -- {
+  --   'echasnovski/mini.surround',
+  --   version = '*',
+  --   config = function()
+  --     require("mini.surround").setup({})
+  --   end
+  -- },
   {
     "folke/tokyonight.nvim",
-    lazy = false,  -- Load at startup
+    lazy = false,    -- Load at startup
     priority = 1000, -- Load before other plugins
     config = function()
       vim.cmd([[colorscheme tokyonight-night]])
