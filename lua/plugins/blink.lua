@@ -47,4 +47,108 @@ return {
       },
     },
   },
+  {
+    "neovim/nvim-lspconfig",
+    --TODO:inlay hints not working
+    name = "lspconfig",
+    dependencies = {
+      -- { "AstroNvim/astrolsp", opts = {} },
+      { "saghen/blink.cmp" },
+    },
+    opts = {
+      inlay_hints = { enabled = true },
+      servers = {
+        html = {},
+        clangd = {},
+        pyright = {},
+        lua_ls = {},
+        -- vtsls = {
+        --   filetypes =
+        --   { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+        -- },
+        astro = {},
+        gopls = {
+          cmd = { "gopls" },
+          filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        },
+        ts_ls = {
+          filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        tailwindcss = {
+          filetypes = {
+            "astro", "javascriptreact", "javascript", "ejs", "typescriptreact", "typescript"
+          },
+          settings = {
+            tailwindCSS = {
+              classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+              includeLanguages = {
+                eelixir = "html-eex",
+                eruby = "erb",
+                htmlangular = "html",
+                templ = "html"
+              },
+              lint = {
+                cssConflict = "warning",
+                invalidApply = "error",
+                invalidConfigPath = "error",
+                invalidScreen = "error",
+                invalidTailwindDirective = "error",
+                invalidVariant = "error",
+                recommendedVariantOrder = "warning"
+              },
+              validate = true,
+            },
+          },
+        },
+        phpactor = {},
+        -- emmet_ls = {
+        --   filetypes = {
+        --     "typescript",
+        --     "html",
+        --     "typescriptreact"
+        --   }
+        -- },
+        hyprls = {},
+        jsonls = {},
+        elixirls = {
+          cmd = { "/home/papa/language_server.sh" },
+          filetypes = { "elixir", "eelixir", "heex", "surface" }
+        }
+      }
+    },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    event = { "BufReadPost", "BufNewFile" },
+    config = function(_, opts)
+      local lspconfig = require("lspconfig")
+      for server, config in pairs(opts.servers) do
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
+      -- vim.tbl_map(require("astrolsp").lsp_setup, require("astrolsp").config.servers)
+    end,
+  },
 }
