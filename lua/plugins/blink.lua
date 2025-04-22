@@ -98,40 +98,17 @@ return {
             },
           },
         },
-        tailwindcss = {
-          filetypes = {
-            "astro", "javascriptreact", "javascript", "ejs", "typescriptreact", "typescript"
-          },
-          settings = {
-            tailwindCSS = {
-              classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-              includeLanguages = {
-                eelixir = "html-eex",
-                eruby = "erb",
-                htmlangular = "html",
-                templ = "html"
-              },
-              lint = {
-                cssConflict = "warning",
-                invalidApply = "error",
-                invalidConfigPath = "error",
-                invalidScreen = "error",
-                invalidTailwindDirective = "error",
-                invalidVariant = "error",
-                recommendedVariantOrder = "warning"
-              },
-              validate = true,
-            },
-          },
-        },
+        tailwindcss = {},
         phpactor = {},
-        -- emmet_ls = {
-        --   filetypes = {
-        --     "typescript",
-        --     "html",
-        --     "typescriptreact"
-        --   }
-        -- },
+        emmet_ls = {
+          filetypes = {
+            "typescript",
+            "javascriptreact",
+            "javascript",
+            "html",
+            "typescriptreact"
+          }
+        },
         hyprls = {},
         jsonls = {},
         elixirls = {
@@ -144,6 +121,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function(_, opts)
       local lspconfig = require("lspconfig")
+      local server = { "tailwindcss" }
       for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)

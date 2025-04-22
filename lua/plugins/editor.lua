@@ -92,4 +92,10 @@ return {
     event = "InsertEnter",
     opts = {},
   },
+  {
+    'Shobhit-Nagpal/nvim-rafce',
+    config = function()
+      require('rafce')
+    end,
+  }
 }
