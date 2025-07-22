@@ -2,7 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     version = "v0.*",
-    dependencies = 'rafamadriz/friendly-snippets',
+    dependencies = { 'rafamadriz/friendly-snippets' },
     event = "InsertEnter",
     opts = {
       appearance = {
@@ -11,8 +11,8 @@ return {
       keymap = {
         preset = "enter",
         ["<Enter>"] = { "accept", "fallback" },
-        ["<Tab>"] = { "select_next" },
-        ["<S-Tab>"] = { "select_prev" },
+        ["<C-n>"] = { "select_next" },
+        ["<C-p>"] = { "select_prev" },
       },
       cmdline = {
         enabled = false
@@ -60,22 +60,25 @@ return {
       servers = {
         html = {},
         clangd = {},
-        pyright = {},
+        -- pyright = {},
+        pylsp = {},
         lua_ls = {},
         -- vtsls = {
         --   filetypes =
         --   { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
         -- },
+        ts_ls = {},
         astro = {},
         gopls = {
           cmd = { "gopls" },
           filetypes = { "go", "gomod", "gowork", "gotmpl" },
         },
         tailwindcss = {},
-        phpactor = {},
         emmet_ls = {
           filetypes = {
             "typescript",
+            "php",
+            "blade",
             "javascriptreact",
             "javascript",
             "html",
@@ -102,10 +105,4 @@ return {
       -- vim.tbl_map(require("astrolsp").lsp_setup, require("astrolsp").config.servers)
     end,
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  }
 }
