@@ -23,3 +23,7 @@ map("n", "<leader>ht", ":set filetype=html<CR>", { noremap = true, silent = true
 -- set("n", "<leader>cf", function()
 --   vim.lsp.buf.format()
 -- end, { desc = "Format Code" })
+
+vim.keymap.set("n", "<leader>cf", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format buffer [LSP]" })

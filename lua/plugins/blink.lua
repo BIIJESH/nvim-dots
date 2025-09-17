@@ -1,4 +1,5 @@
 return {
+  -- Blink completion
   {
     "saghen/blink.cmp",
     version = "v0.*",
@@ -14,16 +15,12 @@ return {
         ["<C-n>"] = { "select_next" },
         ["<C-p>"] = { "select_prev" },
       },
-      cmdline = {
-        enabled = false
-      },
+      cmdline = { enabled = false },
       completion = {
         menu = { border = "single" },
         documentation = {
           auto_show_delay_ms = 0,
-          window = {
-            border = "single",
-          },
+          window = { border = "single" },
           auto_show = false,
         },
         trigger = {
@@ -33,40 +30,27 @@ return {
       },
       signature = {
         enabled = true,
-        window = {
-          border = "single",
-        },
+        window = { border = "single" },
       },
       sources = {
-        providers = {
-          lsp = {
-            async = true
-          },
-        },
-        default = { "lsp", "path", "snippets", "buffer" }, --BUG:with lsp as source ts_ls is so slow
+        providers = { lsp = { async = true } },
+        default = { "lsp", "path", "snippets", "buffer" },
       },
     },
   },
+
+  -- LSP Config
   {
     "neovim/nvim-lspconfig",
-    --TODO:inlay hints not working
     name = "lspconfig",
-    dependencies = {
-      -- { "AstroNvim/astrolsp", opts = {} },
-      { "saghen/blink.cmp" },
-    },
+    dependencies = { "saghen/blink.cmp" },
     opts = {
       inlay_hints = { enabled = true },
       servers = {
         html = {},
         clangd = {},
-        -- pyright = {},
         pylsp = {},
         lua_ls = {},
-        -- vtsls = {
-        --   filetypes =
-        --   { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
-        -- },
         ts_ls = {},
         astro = {},
         gopls = {
@@ -76,13 +60,9 @@ return {
         tailwindcss = {},
         emmet_ls = {
           filetypes = {
-            "typescript",
-            "php",
-            "blade",
-            "javascriptreact",
-            "javascript",
-            "html",
-            "typescriptreact"
+            "typescript", "php", "blade",
+            "javascriptreact", "javascript",
+            "html", "typescriptreact"
           }
         },
         hyprls = {},
@@ -97,12 +77,41 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function(_, opts)
       local lspconfig = require("lspconfig")
-      local server = { "tailwindcss" }
       for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
-      -- vim.tbl_map(require("astrolsp").lsp_setup, require("astrolsp").config.servers)
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local conform = require("conform")
+      conform.setup({
+        formatters_by_ft = {
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          svelte = { "prettier" },
+          css = { "prettier" },
+          html = { "prettier" },
+          json = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+          graphql = { "prettier" },
+          lua = { "stylua" },
+          python = { "isort", "black" },
+        },
+      })
+      vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+        conform.format({
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 500,
+        })
+      end, { desc = "Format file or range (in visual mode)" })
+    end,
+  }
 }
