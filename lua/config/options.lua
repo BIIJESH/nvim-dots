@@ -93,4 +93,4 @@ function MyBufferline()
   return result ~= "" and result or "%#TabLineFill# No Buffers %#TabLine#"
 end
 
--- Key bindings
+vim.opt.termguicolors = true
