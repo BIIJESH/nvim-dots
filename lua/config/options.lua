@@ -94,3 +94,4 @@ function MyBufferline()
 end
 
 vim.opt.termguicolors = true
+vim.diagnostic.config({ virtual_text = true }) -- Disable default virtual text

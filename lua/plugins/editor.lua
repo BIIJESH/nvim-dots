@@ -1,3 +1,9 @@
+function ColorMyPencils(color)
+	color = color or "rose-pine"
+	vim.cmd.colorscheme(color)
+	vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
+end
 return {
 	{
 		"lewis6991/gitsigns.nvim",
@@ -32,25 +38,39 @@ return {
 			require("nvim-surround").setup({})
 		end,
 	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	init = function()
+	--      -- vim.cmd.colorscheme("tokyonight-night")
+	-- 	end,
+	-- },
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("tokyonight-night")
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({ disable_background = false, terminal_colors = true })
+			vim.cmd("colorscheme rose-pine")
+			ColorMyPencils()
 		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "BufReadPost",
+		main = "ibl",
 		opts = {
-			indent = {
-				char = "│",
-				tab_char = "│",
+			exclude = {
+				filetypes = { "help", "dashboard", "neo-tree", "lazy", "mason", "NvimTree" },
 			},
+			indent = { char = "│", tab_char = "│" },
 			scope = { enabled = false },
 		},
-		main = "ibl",
+		config = function(_, opts)
+			vim.schedule(function()
+				require("ibl").setup(opts)
+			end)
+		end,
 	},
 	{
 		"windwp/nvim-autopairs",

@@ -1,4 +1,5 @@
 return {
+	-- Blink completion
 	{
 		"saghen/blink.cmp",
 		version = "v0.*",
@@ -38,86 +39,34 @@ return {
 		},
 	},
 	{
-		"neovim/nvim-lspconfig",
-		name = "lspconfig",
-		dependencies = { "saghen/blink.cmp" },
-		opts = {
-			inlay_hints = { enabled = true },
-			servers = {
-				html = {},
-				clangd = {},
-				pylsp = {},
-				lua_ls = {},
-				ts_ls = {},
-				astro = {},
-				gopls = {
-					cmd = { "gopls" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local conform = require("conform")
+			conform.setup({
+				formatters_by_ft = {
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
+					svelte = { "prettier" },
+					css = { "prettier" },
+					html = { "prettier" },
+					json = { "prettier" },
+					yaml = { "prettier" },
+					markdown = { "prettier" },
+					graphql = { "prettier" },
+					lua = { "stylua" },
+					python = { "isort", "black" },
 				},
-				tailwindcss = {},
-				emmet_ls = {
-					filetypes = {
-						"typescript",
-						"php",
-						"blade",
-						"javascriptreact",
-						"javascript",
-						"html",
-						"typescriptreact",
-					},
-				},
-				hyprls = {},
-				jsonls = {},
-				elixirls = {
-					cmd = { "/home/papa/language_server.sh" },
-					filetypes = { "elixir", "eelixir", "heex", "surface" },
-				},
-			},
-		},
-		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-		event = { "BufReadPost", "BufNewFile" },
-
-		config = function(_, opts)
-			local blink = require("blink.cmp")
-
-			for server, config in pairs(opts.servers) do
-				-- Get Blink capabilities
-				config.capabilities = blink.get_lsp_capabilities(config.capabilities)
-
-				vim.lsp.config(server, config)
-				vim.lsp.enable(server)
-			end
-		end,
-		{
-			"stevearc/conform.nvim",
-			event = { "BufReadPre", "BufNewFile" },
-			config = function()
-				local conform = require("conform")
-				conform.setup({
-					formatters_by_ft = {
-						javascript = { "prettier" },
-						typescript = { "prettier" },
-						javascriptreact = { "prettier" },
-						typescriptreact = { "prettier" },
-						svelte = { "prettier" },
-						css = { "prettier" },
-						html = { "prettier" },
-						json = { "prettier" },
-						yaml = { "prettier" },
-						markdown = { "prettier" },
-						graphql = { "prettier" },
-						lua = { "stylua" },
-						python = { "isort", "black" },
-					},
+			})
+			vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+				conform.format({
+					lsp_fallback = true,
+					async = false,
+					timeout_ms = 500,
 				})
-				vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-					conform.format({
-						lsp_fallback = true,
-						async = false,
-						timeout_ms = 500,
-					})
-				end, { desc = "Format file or range (in visual mode)" })
-			end,
-		},
+			end, { desc = "Format file or range (in visual mode)" })
+		end,
 	},
 }

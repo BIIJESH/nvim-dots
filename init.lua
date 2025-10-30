@@ -1,4 +1,5 @@
 require("config.options")
+require("lsp")
 require("config.keymaps")
 require("config.autocmds")
 require("config.lazy")
@@ -18,3 +19,8 @@ vim.cmd([[
   iabbrev dollar $
   iabbrev andsym &
 ]])
+
+vim.lsp.config("*", {
+	root_makers = { ".git" },
+})
+

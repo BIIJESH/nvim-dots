@@ -8,34 +8,32 @@ return {
 				function()
 					require("oil").toggle_float()
 				end,
-				{ desc = "Toggle Oil Float" },
+				desc = "Toggle Oil Float",
 			},
 		},
-		config = function()
-			local oil = require("oil")
-			oil.setup({
-				columns = { "icon" },
-				keymaps = {
-					["C-h"] = false,
-					["M-h"] = "actions.select_split",
+		opts = {
+			columns = { "icon" },
+			keymaps = {
+				["C-h"] = false,
+				["M-h"] = "actions.select_split",
+			},
+			view_options = {
+				show_hidden = true,
+			},
+			float = {
+				padding = 2,
+				max_width = 60,
+				max_height = 16,
+				border = "rounded",
+				win_options = {
+					winblend = 0,
 				},
-				view_options = {
-					show_hidden = true,
-				},
-				float = {
-					padding = 2,
-					max_width = 60,
-					max_height = 16,
-					border = "rounded",
-					win_options = {
-						winblend = 0,
-					},
-					get_win_title = nil,
-					preview_split = "auto",
-				},
-			})
-		end,
+				get_win_title = nil,
+				preview_split = "auto",
+			},
+		},
 	},
+
 	{
 		"ibhagwan/fzf-lua",
 		lazy = true,
