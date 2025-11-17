@@ -1,9 +1,3 @@
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-	vim.api.nvim_set_hl(0, "Normal", { bg = "black" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
-end
 return {
 	{
 		"lewis6991/gitsigns.nvim",
@@ -38,23 +32,22 @@ return {
 			require("nvim-surround").setup({})
 		end,
 	},
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	init = function()
-	--      -- vim.cmd.colorscheme("tokyonight-night")
-	-- 	end,
-	-- },
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({ disable_background = false, terminal_colors = true })
-			vim.cmd("colorscheme rose-pine")
-			ColorMyPencils()
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		init = function()
+	     vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		require("rose-pine").setup({ disable_background = false, styles = { italic = false } })
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",

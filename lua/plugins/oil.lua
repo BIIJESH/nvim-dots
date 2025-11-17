@@ -1,38 +1,55 @@
 return {
-	{
-		"stevearc/oil.nvim",
-		lazy = true,
-		keys = {
-			{
-				"-",
-				function()
-					require("oil").toggle_float()
-				end,
-				desc = "Toggle Oil Float",
-			},
-		},
-		opts = {
-			columns = { "icon" },
-			keymaps = {
-				["C-h"] = false,
-				["M-h"] = "actions.select_split",
-			},
-			view_options = {
-				show_hidden = true,
-			},
-			float = {
-				padding = 2,
-				max_width = 60,
-				max_height = 16,
-				border = "rounded",
-				win_options = {
-					winblend = 0,
-				},
-				get_win_title = nil,
-				preview_split = "auto",
-			},
-		},
-	},
+{
+  "stevearc/oil.nvim",
+  lazy = true,
+  keys = {
+    {
+      "-",
+      function()
+        require("oil").toggle_float()
+      end,
+      desc = "Toggle Oil Float",
+    },
+  },
+  opts = {
+    columns = { "icon" },
+    keymaps = {
+      ["C-h"] = false,
+      ["M-h"] = "actions.select_split",
+    },
+    view_options = {
+      show_hidden = true,
+    },
+    float = {
+      padding = 2,
+      max_width = 60,
+      max_height = 16,
+      border = "rounded",
+      win_options = {
+        winblend = 0, -- keep it fully opaque
+      },
+      get_win_title = nil,
+      preview_split = "auto",
+    },
+  },
+  config = function(_, opts)
+    require("oil").setup(opts)
+
+    -- Dark theme highlights
+    vim.cmd([[
+      highlight OilNormal guibg=#000000 guifg=#c1c1c1
+      highlight OilNormalNC guibg=#000000 guifg=#888888
+      highlight OilDir guifg=#486e6f gui=bold
+      highlight OilFile guifg=#c1c1c1
+      highlight OilGitAdded guifg=#dd9999
+      highlight OilGitModified guifg=#a06666
+      highlight OilGitDeleted guifg=#888888
+      highlight OilBorder guifg=#486e6f guibg=#000000
+      highlight OilPreviewNormal guibg=#000000 guifg=#c1c1c1
+      highlight OilPreviewBorder guifg=#486e6f guibg=#000000
+    ]])
+  end,
+},
 
 	{
 		"ibhagwan/fzf-lua",
