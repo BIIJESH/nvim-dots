@@ -36,18 +36,11 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
+    transparent = true,
 		init = function()
 	     vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
-	-- {
-	-- 	"rose-pine/neovim",
-	-- 	name = "rose-pine",
-	-- 	config = function()
-	-- 		require("rose-pine").setup({ disable_background = false, styles = { italic = false } })
-	-- 		vim.cmd("colorscheme rose-pine")
-	-- 	end,
-	-- },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",

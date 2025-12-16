@@ -5,4 +5,4 @@ vim.lsp.config("*", {
 require("lsp.ts_ls")
 require("lsp.tailwindcss")
 require("lsp.python").setup()
-
+require("lsp.emmet_ls")

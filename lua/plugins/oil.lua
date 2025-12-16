@@ -77,13 +77,40 @@ return {
 				["--prompt"] = "   ",
 				["--pointer"] = "󱞩 ",
 			},
-			files = {
-				fd_opts = "--type f --hidden --follow --exclude .git --exclude node_modules --exclude venv --exclude .vite",
-			},
-			grep = {
-				rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case -g '!node_modules/*' -g '!venv/*' -g '!.vite/*' ",
-			},
-			file_ignore_patterns = { "%.svg", "%.class", "%.png", "%.jpg" },
+    files = {
+        fd_opts = [[
+          --type f
+          --hidden
+          --exclude .git
+          --exclude node_modules
+          --exclude .next
+          --exclude dist
+          --exclude venv
+          --exclude .vite
+        ]],
+      },
+      grep = {
+          rg_opts = [[
+            --hidden
+            --column
+            --line-number
+            --no-heading
+            --color=always
+            --smart-case
+            --glob=!node_modules/**
+            --glob=!dist/**
+            --glob=!venv/**
+            --glob=!.vite/**
+            --glob=!.git/**
+          ]],
+        },
+      file_ignore_patterns = {
+          "%.svg", "%.class", "%.png", "%.jpg",
+          "node_modules/*",
+          "venv/*",
+          "dist/*",
+          ".vite/*",
+        },
 		},
 		keys = {
 			{ "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Files" },
