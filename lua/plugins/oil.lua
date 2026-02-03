@@ -115,13 +115,13 @@ return {
 		keys = {
 			{ "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Files" },
 			{ "<leader>fd", "<cmd>FzfLua diagnostics_document<CR>", desc = "Diagnostics Document" },
-			{
-				"<leader>ca",
-				function()
-					require("fzf-lua").lsp_code_actions({ silent = true })
-				end,
-				desc = "Code Actions",
-			},
+			-- {
+			-- 	"<leader>ca",
+			-- 	function()
+			-- 		require("fzf-lua").lsp_code_actions({ silent = true })
+			-- 	end,
+			-- 	desc = "Code Actions",
+			-- },
 			{ "<leader>fr", "<cmd>FzfLua oldfiles<CR>", desc = "Recent files" },
 			{ "<leader>fg", "<cmd>FzfLua live_grep<CR>", desc = "Text" },
 			{ "<leader>fb", "<cmd>FzfLua buffers<CR>", desc = "Buffers" },
