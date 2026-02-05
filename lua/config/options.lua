@@ -9,6 +9,8 @@ local filetype = vim.filetype
 -- Always show the statusline
 opt.showmode = true
 g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+vim.opt.guicursor = ""
+vim.opt.guicursor:append("a:blinkon100")
 
 -- Leader keys
 g.mapleader = " "
@@ -49,8 +51,8 @@ opt.shiftround = true
 opt.expandtab = true
 
 -- Netrw settings
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
+g.loaded_netrw = 0
+g.loaded_netrwPlugin = 0
 
 -- Clipboard settings
 opt.clipboard:append("unnamedplus")
@@ -61,7 +63,7 @@ opt.linebreak = true
 
 -- Relative line numbers
 opt.relativenumber = true
-g.netrw_syntax_highlight = 1
+g.netrw_syntax_highlight = 0
 -- Filetype customization
 filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
