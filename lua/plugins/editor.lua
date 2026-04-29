@@ -146,4 +146,7 @@ return {
 {
   "folke/zen-mode.nvim",
 },
+{
+  "xiyaowong/transparent.nvim",
+}
 }

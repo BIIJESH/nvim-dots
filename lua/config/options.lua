@@ -9,8 +9,6 @@ local filetype = vim.filetype
 -- Always show the statusline
 opt.showmode = true
 g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
-vim.opt.guicursor = ""
-vim.opt.guicursor:append("a:blinkon100")
 
 -- Leader keys
 g.mapleader = " "
