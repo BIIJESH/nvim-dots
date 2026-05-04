@@ -4,6 +4,35 @@ require("config.keymaps")
 require("config.autocmds")
 require("config.lazy")
 
+local parser_path = "/Users/bijesh/.local/share/tree-sitter/"
+
+vim.treesitter.language.add(
+    'tsx',
+    { path = parser_path .. 'tree-sitter-typescript/tsx/parser.dylib' }
+)
+vim.treesitter.language.add(
+    'typescript',
+    { path = parser_path .. 'tree-sitter-typescript/typescript/parser.dylib' }
+)
+vim.treesitter.language.add(
+    'python',
+    { path = parser_path .. 'tree-sitter-python/python.dylib' }
+)
+vim.treesitter.language.add(
+    'html',
+    { path = parser_path .. 'tree-sitter-html/html.dylib' }
+)
+vim.treesitter.language.add(
+    'css',
+    { path = parser_path .. 'tree-sitter-css/css.dylib' }
+)
+vim.treesitter.language.add(
+    'javascript',
+    { path = parser_path .. 'tree-sitter-javascript/javascript.dylib' }
+)
+
+vim.treesitter.language.register('tsx', { 'typescriptreact' })
+
 vim.cmd([[
   " Number replacements
   iabbrev one 1
@@ -23,4 +52,3 @@ vim.cmd([[
 vim.lsp.config("*", {
 	root_makers = { ".git" },
 })
-
