@@ -4,7 +4,8 @@ require("config.keymaps")
 require("config.autocmds")
 require("config.lazy")
 
-local parser_path = "/Users/bijesh/.local/share/tree-sitter/"
+-- local parser_path = vim.env.HOME .. "/.local/share/tree-sitter"
+local parser_path = vim.loop.os_homedir() .. "/.local/share/tree-sitter/"
 
 vim.treesitter.language.add(
     'tsx',
