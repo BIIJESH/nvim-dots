@@ -77,5 +77,123 @@ return {
       },
     })
   end,
-}
+},
+{
+  "folke/todo-comments.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+
+  event = { "BufReadPost", "BufNewFile" },
+
+  opts = {
+    signs = true,
+    sign_priority = 8,
+
+    keywords = {
+      FIX = {
+        icon = " ",
+        color = "error",
+        alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+      },
+
+      TODO = {
+        icon = " ",
+        color = "info",
+      },
+
+      HACK = {
+        icon = " ",
+        color = "warning",
+      },
+
+      WARN = {
+        icon = " ",
+        color = "warning",
+        alt = { "WARNING", "XXX" },
+      },
+
+      PERF = {
+        icon = " ",
+        alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" },
+      },
+
+      NOTE = {
+        icon = " ",
+        color = "hint",
+        alt = { "INFO" },
+      },
+
+      TEST = {
+        icon = "⏲ ",
+        color = "test",
+        alt = { "TESTING", "PASSED", "FAILED" },
+      },
+    },
+
+    highlight = {
+      multiline = true,
+      multiline_pattern = "^.",
+      multiline_context = 10,
+
+      before = "",
+      keyword = "wide",
+      after = "fg",
+
+      pattern = [[.*<(KEYWORDS)\s*:]],
+      comments_only = true,
+
+      max_line_len = 400,
+      exclude = {},
+    },
+
+    search = {
+      command = "rg",
+      args = {
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+      },
+
+      pattern = [[\b(KEYWORDS):]],
+    },
+  },
+
+  config = function(_, opts)
+    require("todo-comments").setup(opts)
+
+    -- Jump to next todo comment
+    vim.keymap.set("n", "]t", function()
+      require("todo-comments").jump_next()
+    end, { desc = "Next todo comment" })
+
+    -- Jump to previous todo comment
+    vim.keymap.set("n", "[t", function()
+      require("todo-comments").jump_prev()
+    end, { desc = "Previous todo comment" })
+
+    -- Jump only between ERROR/WARNING comments
+    vim.keymap.set("n", "]e", function()
+      require("todo-comments").jump_next({
+        keywords = { "ERROR", "WARNING", "WARN" },
+      })
+    end, { desc = "Next error/warning todo comment" })
+
+    vim.keymap.set("n", "[e", function()
+      require("todo-comments").jump_prev({
+        keywords = { "ERROR", "WARNING", "WARN" },
+      })
+    end, { desc = "Previous error/warning todo comment" })
+
+    -- Telescope integration
+    vim.keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", {
+      desc = "Search todo comments",
+    })
+
+    -- Quickfix list
+    vim.keymap.set("n", "<leader>xt", "<cmd>TodoQuickFix<cr>", {
+      desc = "Todo QuickFix",
+    })
+  end,
+},
 }

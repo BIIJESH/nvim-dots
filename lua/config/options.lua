@@ -66,9 +66,11 @@ g.netrw_syntax_highlight = 0
 filetype.add({
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single", -- You can use "single", "double", "solid", "shadow", etc.
-})
+vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+  return vim.lsp.handlers.hover(err, result, ctx, vim.tbl_extend("force", config or {}, {
+    border = "single",
+  }))
+end
 
 vim.o.showtabline = 2
 

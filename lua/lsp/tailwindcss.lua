@@ -25,9 +25,6 @@ local config = {
     if not cfg.settings.editor then cfg.settings.editor = {} end
     cfg.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
   end,
-  on_attach = function(client, bufnr)
-    print("Tailwind LSP attached")
-  end,
 }
 
 -- Start the LSP manually

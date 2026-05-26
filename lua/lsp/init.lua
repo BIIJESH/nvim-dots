@@ -1,7 +1,8 @@
 vim.lsp.config("*", {
-  root_makers = { ".git" },
+  root_markers = { ".git" },
 })
 
+require("lsp.lua_ls")
 require("lsp.ts_ls")
 require("lsp.tailwindcss")
 require("lsp.python").setup()

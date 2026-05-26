@@ -5,7 +5,7 @@ require("config.autocmds")
 require("config.lazy")
 
 -- local parser_path = vim.env.HOME .. "/.local/share/tree-sitter"
-local parser_path = vim.loop.os_homedir() .. "/.local/share/tree-sitter/"
+local parser_path = vim.uv.os_homedir() .. "/.local/share/tree-sitter/"
 
 vim.treesitter.language.add(
     'tsx',
@@ -15,6 +15,8 @@ vim.treesitter.language.add(
     'typescript',
     { path = parser_path .. 'tree-sitter-typescript/typescript/parser.dylib' }
 )
+
+vim.treesitter.language.register('tsx', 'typescriptreact')
 vim.treesitter.language.add(
     'python',
     { path = parser_path .. 'tree-sitter-python/python.dylib' }
@@ -31,8 +33,6 @@ vim.treesitter.language.add(
     'javascript',
     { path = parser_path .. 'tree-sitter-javascript/javascript.dylib' }
 )
-
-vim.treesitter.language.register('tsx', { 'typescriptreact' })
 
 vim.cmd([[
   " Number replacements
@@ -51,5 +51,5 @@ vim.cmd([[
 ]])
 
 vim.lsp.config("*", {
-	root_makers = { ".git" },
+	root_markers = { ".git" },
 })
