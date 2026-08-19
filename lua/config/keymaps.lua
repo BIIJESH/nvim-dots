@@ -27,3 +27,9 @@ map("n", "<leader>ht", ":set filetype=html<CR>", { noremap = true, silent = true
 vim.keymap.set("n", "<leader>cf", function()
   vim.lsp.buf.format({ async = true })
 end, { desc = "Format buffer [LSP]" })
+
+vim.opt.mouse = "a"
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+  desc = "Go to Definition",
+})
+vim.keymap.set("n", "<C-LeftMouse>", vim.lsp.buf.definition)
